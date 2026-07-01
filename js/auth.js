@@ -67,7 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const { data, error } = await supabaseClient.auth.signUp({
       email: document.getElementById('registerEmail').value,
       password: document.getElementById('registerPassword').value,
-      options: { data: { full_name: fullName, phone } },
+      options: {
+        data: { full_name: fullName, phone },
+        emailRedirectTo: window.location.origin + window.location.pathname,
+      },
     });
     if (error) { status.textContent = 'Hata: ' + error.message; return; }
     if (data.user) {
