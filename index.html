@@ -13,6 +13,12 @@
 </head>
 <body>
 
+<!-- GİRİŞ ANİMASYONU -->
+<div class="intro-splash" id="introSplash">
+  <img src="images/logo.jpg" alt="DOS Garage Logo" class="intro-logo">
+  <span class="intro-text">DOS <em>GARAGE</em></span>
+</div>
+
 <!-- HEADER -->
 <header class="site-header" id="siteHeader">
   <div class="container header-inner">
@@ -27,6 +33,7 @@
         <li><a href="#hakkimizda">Hakkımızda</a></li>
         <li><a href="#hizmetler">Hizmetlerimiz</a></li>
         <li><a href="#neden-biz">Neden Biz?</a></li>
+        <li><a href="#randevu">Randevu</a></li>
         <li><a href="#galeri">Galeri</a></li>
         <li><a href="#yorumlar">Yorumlar</a></li>
         <li><a href="#iletisim">İletişim</a></li>
@@ -35,7 +42,8 @@
 
     <div class="header-actions">
       <a href="tel:+900000000000" class="header-phone"><i class="fa-solid fa-phone"></i> 0 (5XX) XXX XX XX</a>
-      <a href="#iletisim" class="btn btn-primary btn-sm">Randevu Al</a>
+      <button class="btn btn-outline btn-sm" id="authOpenBtn" type="button">Giriş Yap / Üye Ol</button>
+      <a href="#randevu" class="btn btn-primary btn-sm">Randevu Al</a>
       <button class="nav-toggle" id="navToggle" aria-label="Menüyü Aç/Kapat">
         <span></span><span></span><span></span>
       </button>
@@ -52,7 +60,7 @@
     <h1 data-aos>Motosikletiniz Usta Ellerde,<br><span class="accent">DOS GARAGE</span> Güvencesinde</h1>
     <p class="hero-desc" data-aos>Kaza sonrası hasar onarımından periyodik bakıma, ekspertizden orijinal yedek parçaya kadar tüm motosiklet ihtiyaçlarınız için şeffaf fiyat ve uzman kadro bir arada.</p>
     <div class="hero-cta" data-aos>
-      <a href="#iletisim" class="btn btn-primary">Randevu Al</a>
+      <a href="#randevu" class="btn btn-primary">Randevu Al</a>
       <a href="https://wa.me/900000000000" target="_blank" rel="noopener" class="btn btn-outline"><i class="fa-brands fa-whatsapp"></i> WhatsApp'tan Yaz</a>
     </div>
   </div>
@@ -165,6 +173,68 @@
         <i class="fa-solid fa-truck-fast"></i>
         <h3>Hızlı Teslimat</h3>
         <p>Planlı iş akışıyla motosikletinizi en kısa sürede teslim ediyoruz.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ÜYELİK & RANDEVU -->
+<section class="section membership" id="randevu">
+  <div class="container">
+    <p class="section-tag center">Üyelik &amp; Randevu</p>
+    <h2 class="center">Online Randevu Sistemi</h2>
+    <p class="section-sub center">Randevu oluşturmak için üye girişi yapmanız gerekir. Üyeliğiniz sayesinde geçmiş ve gelecek randevularınızı tek yerden takip edebilirsiniz.</p>
+
+    <div class="membership-guest" id="guestPrompt">
+      <p>Randevu oluşturmak için lütfen giriş yapın veya üye olun.</p>
+      <button class="btn btn-primary" id="randevuAuthBtn" type="button">Giriş Yap / Üye Ol</button>
+    </div>
+
+    <div class="membership-member" id="memberArea" hidden>
+      <div class="member-welcome">
+        <span>Hoş geldiniz, <strong id="memberName"></strong></span>
+        <button class="btn btn-outline btn-sm" id="logoutBtn" type="button">Çıkış Yap</button>
+      </div>
+
+      <div class="member-grid">
+        <form class="contact-form" id="appointmentForm">
+          <h3>Yeni Randevu Oluştur</h3>
+          <div class="form-group">
+            <label for="apptService">Hizmet</label>
+            <select id="apptService" required>
+              <option value="">Seçiniz</option>
+              <option>Kaza &amp; Hasar Onarımı</option>
+              <option>Periyodik Bakım &amp; Servis</option>
+              <option>Ekspertiz Kontrolü</option>
+              <option>Orijinal Yedek Parça</option>
+              <option>Sigorta Danışmanlığı</option>
+              <option>Diğer</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="apptDate">Tarih</label>
+              <input type="date" id="apptDate" required>
+            </div>
+            <div class="form-group">
+              <label for="apptTime">Saat</label>
+              <input type="time" id="apptTime" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="apptNote">Notunuz</label>
+            <textarea id="apptNote" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Randevu Oluştur</button>
+          <p class="form-status" id="appointmentStatus"></p>
+        </form>
+
+        <div class="appointment-list">
+          <h3>Randevularım</h3>
+          <ul class="appt-list" id="appointmentList">
+            <li class="appt-empty">Henüz randevunuz bulunmuyor.</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -286,7 +356,9 @@
         <li><a href="#top">Anasayfa</a></li>
         <li><a href="#hakkimizda">Hakkımızda</a></li>
         <li><a href="#hizmetler">Hizmetlerimiz</a></li>
+        <li><a href="#randevu">Randevu</a></li>
         <li><a href="#iletisim">İletişim</a></li>
+        <li><a href="kvkk.html">KVKK Aydınlatma Metni</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -318,6 +390,57 @@
   <i class="fa-brands fa-whatsapp"></i>
 </a>
 
+<!-- GİRİŞ / ÜYE OL MODAL -->
+<div class="modal-overlay" id="authModal">
+  <div class="modal-box">
+    <button class="modal-close" id="authModalClose" type="button" aria-label="Kapat">&times;</button>
+    <div class="modal-tabs">
+      <button class="modal-tab active" type="button" data-tab="login">Giriş Yap</button>
+      <button class="modal-tab" type="button" data-tab="register">Üye Ol</button>
+    </div>
+
+    <form class="modal-form active" id="loginForm">
+      <div class="form-group">
+        <label for="loginEmail">E-posta</label>
+        <input type="email" id="loginEmail" required>
+      </div>
+      <div class="form-group">
+        <label for="loginPassword">Şifre</label>
+        <input type="password" id="loginPassword" required minlength="6">
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Giriş Yap</button>
+      <p class="form-status" id="loginStatus"></p>
+    </form>
+
+    <form class="modal-form" id="registerForm">
+      <div class="form-group">
+        <label for="registerName">Ad Soyad</label>
+        <input type="text" id="registerName" required>
+      </div>
+      <div class="form-group">
+        <label for="registerPhone">Telefon</label>
+        <input type="tel" id="registerPhone" required>
+      </div>
+      <div class="form-group">
+        <label for="registerEmail">E-posta</label>
+        <input type="email" id="registerEmail" required>
+      </div>
+      <div class="form-group">
+        <label for="registerPassword">Şifre</label>
+        <input type="password" id="registerPassword" required minlength="6">
+      </div>
+      <div class="form-group form-checkbox">
+        <label><input type="checkbox" id="registerKvkk" required> <a href="kvkk.html" target="_blank">KVKK Aydınlatma Metni</a>'ni okudum, kabul ediyorum.</label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Üye Ol</button>
+      <p class="form-status" id="registerStatus"></p>
+    </form>
+  </div>
+</div>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>

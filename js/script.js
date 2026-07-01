@@ -1,4 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Giriş logosu animasyonu (oturum başına bir kez gösterilir)
+  const introSplash = document.getElementById('introSplash');
+  if (introSplash) {
+    if (sessionStorage.getItem('dosgarage_intro_shown')) {
+      introSplash.remove();
+    } else {
+      document.body.classList.add('intro-active');
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          introSplash.classList.add('hide');
+          document.body.classList.remove('intro-active');
+          sessionStorage.setItem('dosgarage_intro_shown', '1');
+          setTimeout(() => introSplash.remove(), 700);
+        }, 1000);
+      });
+    }
+  }
+
   // Yıl bilgisi
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
