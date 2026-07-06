@@ -1,4 +1,21 @@
+// ============================================================
+// TEK NOKTADAN AYAR: WhatsApp numarası (ülke koduyla, +, boşluk
+// ve parantez olmadan). Örn: 905321234567
+// Sayfadaki tüm wa.me linkleri ve form yönlendirmeleri buradan beslenir.
+// ============================================================
+const WHATSAPP_NUMBER = '900000000000';
+
+function waLink(text) {
+  const base = 'https://wa.me/' + WHATSAPP_NUMBER;
+  return text ? base + '?text=' + encodeURIComponent(text) : base;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  // Tüm statik wa.me linklerini tek numaradan besle
+  document.querySelectorAll('a[href*="wa.me"]').forEach(a => {
+    a.href = waLink();
+  });
+
   // Giriş logosu animasyonu (oturum başına bir kez gösterilir)
   const introSplash = document.getElementById('introSplash');
   if (introSplash) {
@@ -51,14 +68,48 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.15 });
   revealEls.forEach(el => observer.observe(el));
 
-  // İletişim formu (arka uç bağlanana kadar örnek davranış)
-  const form = document.getElementById('contactForm');
-  const status = document.getElementById('formStatus');
-  if (form) {
-    form.addEventListener('submit', (e) => {
+  // Randevu formu → WhatsApp mesajı
+  const apptForm = document.getElementById('waAppointmentForm');
+  if (apptForm) {
+    apptForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      status.textContent = 'Talebiniz alındı! En kısa sürede sizinle iletişime geçeceğiz.';
-      form.reset();
+      const name = document.getElementById('apptName').value.trim();
+      const service = document.getElementById('apptService').value;
+      const date = document.getElementById('apptDate').value;
+      const time = document.getElementById('apptTime').value;
+      const bike = document.getElementById('apptBike').value.trim();
+      const note = document.getElementById('apptNote').value.trim();
+
+      let msg = 'Merhaba, randevu almak istiyorum.\n';
+      msg += 'Ad Soyad: ' + name + '\n';
+      msg += 'Hizmet: ' + service + '\n';
+      msg += 'Tarih: ' + date + (time ? ' ' + time : '') + '\n';
+      if (bike) msg += 'Motosiklet: ' + bike + '\n';
+      if (note) msg += 'Not: ' + note;
+
+      window.open(waLink(msg), '_blank', 'noopener');
+    });
+  }
+
+  // İletişim formu → WhatsApp mesajı
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const service = document.getElementById('service').value;
+      const message = document.getElementById('message').value.trim();
+
+      let msg = 'Merhaba, bilgi almak istiyorum.\n';
+      msg += 'Ad Soyad: ' + name + '\n';
+      msg += 'Telefon: ' + phone + '\n';
+      if (email) msg += 'E-posta: ' + email + '\n';
+      msg += 'Hizmet: ' + service + '\n';
+      if (message) msg += 'Mesaj: ' + message;
+
+      window.open(waLink(msg), '_blank', 'noopener');
     });
   }
 });

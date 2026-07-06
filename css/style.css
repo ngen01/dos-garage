@@ -443,6 +443,7 @@ h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); color: var(--dark); margin-bottom: 8
   box-shadow: 0 0 0 3px rgba(201,154,61,.15);
 }
 .form-status { margin-top: 12px; font-size: .9rem; color: var(--gold-dark); min-height: 20px; }
+.form-note { margin-top: 12px; font-size: .85rem; color: #8a8578; text-align: center; }
 
 .map-wrap { margin-top: 60px; filter: grayscale(.2); }
 
@@ -501,178 +502,8 @@ body.intro-active { overflow: hidden; }
   50% { transform: scale(1.08); }
 }
 
-/* ============ AUTH MODAL ============ */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 2000;
-  background: rgba(15,14,12,.65);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity .25s ease, visibility .25s ease;
-}
-.modal-overlay.open { opacity: 1; visibility: visible; }
-.modal-box {
-  position: relative;
-  width: 100%;
-  max-width: 420px;
-  max-height: 90vh;
-  overflow-y: auto;
-  background: var(--white);
-  border-radius: var(--radius);
-  padding: 36px;
-  box-shadow: var(--shadow);
-}
-.modal-close {
-  position: absolute;
-  top: 12px; right: 14px;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  line-height: 1;
-  color: #999;
-  cursor: pointer;
-}
-.modal-tabs { display: flex; gap: 10px; margin-bottom: 26px; }
-.modal-tab {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #ddd3ba;
-  background: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-family: var(--font-heading);
-  text-transform: uppercase;
-  font-size: .8rem;
-  letter-spacing: .5px;
-  color: #7a7568;
-  transition: var(--transition);
-}
-.modal-tab.active { background: var(--gold); color: var(--dark); border-color: var(--gold); }
-.modal-form { display: none; }
-.modal-form.active { display: block; }
-.form-checkbox label {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  font-size: .85rem;
-  font-weight: 400;
-  text-transform: none;
-  color: #6b665d;
-}
-.form-checkbox input { width: auto; margin-top: 3px; }
-.form-checkbox a { color: var(--gold-dark); text-decoration: underline; }
-
-/* ============ ÜYELİK / RANDEVU ============ */
-.membership-guest { text-align: center; margin-top: 40px; }
-.membership-guest p { margin-bottom: 18px; color: #6b665d; }
-.member-welcome {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 30px 0 10px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #eee3cf;
-}
-.member-welcome span { color: var(--dark-2); font-weight: 500; }
-.member-grid {
-  display: grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: 40px;
-  margin-top: 30px;
-}
-.appointment-list h3 { color: var(--dark); margin-bottom: 22px; font-size: 1.2rem; }
-.appt-list { display: flex; flex-direction: column; gap: 12px; }
-.appt-item, .appt-empty {
-  background: var(--white);
-  border: 1px solid #eee3cf;
-  border-radius: 8px;
-  padding: 14px 18px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-.appt-empty { color: #999; justify-content: center; }
-.appt-item strong { color: var(--dark); }
-.appt-item span { color: #6b665d; font-size: .88rem; }
-.appt-item em {
-  font-style: normal;
-  font-size: .75rem;
-  padding: 4px 10px;
-  border-radius: 20px;
-  background: #f2ead9;
-  color: var(--gold-dark);
-  text-transform: uppercase;
-}
-
-/* ============ ADMIN PANEL ============ */
-.admin-badge {
-  color: var(--gold);
-  font-family: var(--font-heading);
-  font-size: .8rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  border: 1px solid rgba(201,154,61,.4);
-  padding: 6px 14px;
-  border-radius: 20px;
-}
-.admin-page { padding-top: 140px; min-height: 100vh; }
-.admin-login-form { max-width: 420px; margin: 30px auto 0; }
-.admin-search { max-width: 420px; margin: 0 0 30px; }
-.admin-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-}
-.admin-col h3 { color: var(--dark); margin-bottom: 20px; font-size: 1.1rem; }
-.admin-row { flex-wrap: wrap; gap: 14px; align-items: center; }
-.admin-row-info { display: flex; flex-direction: column; gap: 4px; }
-.admin-row select {
-  padding: 8px 12px;
-  border: 1px solid #ddd3ba;
-  border-radius: 6px;
-  font-family: var(--font-body);
-  font-size: .85rem;
-  background: #fdfbf7;
-}
-.customer-block {
-  background: var(--white);
-  border: 1px solid #eee3cf;
-  border-radius: var(--radius);
-  padding: 18px 22px;
-  margin-bottom: 16px;
-}
-.customer-block h4 { color: var(--dark); font-size: 1rem; margin-bottom: 12px; }
-.customer-block h4 span { color: #999; font-weight: 400; font-size: .85rem; margin-left: 8px; }
-.customer-block ul { display: flex; flex-direction: column; gap: 8px; }
-.customer-block li {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  flex-wrap: wrap;
-  font-size: .88rem;
-  color: #6b665d;
-  border-top: 1px dashed #eee3cf;
-  padding-top: 8px;
-}
-.customer-block li:first-child { border-top: none; padding-top: 0; }
-.customer-block em {
-  font-style: normal;
-  font-size: .75rem;
-  padding: 3px 9px;
-  border-radius: 20px;
-  background: #f2ead9;
-  color: var(--gold-dark);
-  text-transform: uppercase;
-}
+/* ============ RANDEVU (WHATSAPP) ============ */
+.appointment-wa { max-width: 640px; margin: 40px auto 0; }
 
 /* ============ WHATSAPP FLOAT ============ */
 .whatsapp-float {
@@ -705,7 +536,7 @@ body.intro-active { overflow: hidden; }
   .main-nav ul { flex-direction: column; padding: 30px 24px; gap: 22px; }
   .header-phone { display: none; }
   .nav-toggle { display: flex; }
-  .about-grid, .contact-grid, .member-grid, .admin-columns { grid-template-columns: 1fr; }
+  .about-grid, .contact-grid { grid-template-columns: 1fr; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .why-grid { grid-template-columns: repeat(2, 1fr); }
   .testimonials-grid { grid-template-columns: 1fr; }
